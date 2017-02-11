@@ -1,0 +1,9 @@
+[slackbot]
+api_token = "<your-slackbot-api-token>"
+default_reply = "Sorry but I didn't understand your command"
+plugins = [
+    "plugins"
+]
+
+[path]
+db = "resource_keeper.sqlite"
