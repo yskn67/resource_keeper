@@ -4,11 +4,8 @@ import sys
 import os
 sys.path.append(os.pardir)
 import db
+from .lib import IsExistException, IsNotExistException
 from slackbot.bot import respond_to
-
-
-class IsExistException(BaseException):
-    pass
 
 
 @respond_to('^\s*list\s*$')
@@ -105,7 +102,7 @@ def remove_resource_type(msg, rtype):
         cur.close()
 
         if rows[0][0] <= 0:
-            raise(IsExistException("resource type is not existed!"))
+            raise(IsNotExistException("resource type is not existed!"))
 
         cur = conn.cursor()
         cur.execute("""
@@ -122,7 +119,7 @@ def remove_resource_type(msg, rtype):
             AND type = ?
         """, (ch, rtype))
         cur.close()
-    except IsExistException:
+    except IsNotExistException:
         exist = False
     except Exception:
         conn.rollback()
