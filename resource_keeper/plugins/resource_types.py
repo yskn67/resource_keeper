@@ -37,7 +37,7 @@ def list_resource_type(msg):
     elif len(rtlist) <= 0:
         msg.reply("There is no resouce type in this channel")
     else:
-        ret_msg = "\n```\n{}\n```".format("\n".join([rt[0] + "," for rt in rtlist]))
+        ret_msg = "\n```\n{}\n```".format("\n".join([rt[0] for rt in rtlist]))
         msg.reply(ret_msg)
 
 
@@ -110,6 +110,14 @@ def remove_resource_type(msg, rtype):
         cur = conn.cursor()
         cur.execute("""
             DELETE FROM resource_types
+            WHERE channel = ?
+            AND type = ?
+        """, (ch, rtype))
+        cur.close()
+
+        cur = conn.cursor()
+        cur.execute("""
+            DELETE FROM resources
             WHERE channel = ?
             AND type = ?
         """, (ch, rtype))
