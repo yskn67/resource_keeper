@@ -23,7 +23,7 @@ def create_table():
                 name TEXT NOT NULL,
                 user TEXT,
                 updated DATETIME NOT NULL,
-                PRIMARY KEY(channel, type)
+                PRIMARY KEY(channel, type, name)
             )
             """)
         ok = True

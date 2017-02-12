@@ -7,3 +7,11 @@ class IsExistException(BaseException):
 
 class IsNotExistException(BaseException):
     pass
+
+
+class IsLockedException(BaseException):
+    pass
+
+
+class IsUnlockedException(BaseException):
+    pass
