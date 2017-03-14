@@ -2,6 +2,7 @@
 
 import sys
 import db
+from datetime import datetime
 from slackbot.bot import Bot
 
 
@@ -44,7 +45,7 @@ def main():
         print("Resource table is not created!", file=sys.stderr)
         sys.exit(1)
     bot = Bot()
-    print("start resource keeper")
+    print("start resource keeper at {}".format(datetime.now()))
     bot.run()
 
 
