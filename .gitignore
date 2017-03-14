@@ -90,3 +90,6 @@ ENV/
 
 # db file
 *.sqlite
+
+# upstart conf file
+resource_keeper.conf
