@@ -134,7 +134,7 @@ def remove_resource(msg, rtype, rname):
 @respond_to('^\s*lock\s+(\w+)\s+(\w+)\s*$')
 def lock_resource(msg, rtype, rname):
     ch = msg.channel._body['name']
-    uid = msg.channel._body['creator']
+    uid = msg._body['user']
     conn = db.get_conn()
     try:
         if not is_exist_resouce_type(conn, ch, rtype):
@@ -173,7 +173,7 @@ def lock_resource(msg, rtype, rname):
 @respond_to('^\s*unlock\s+(\w+)\s+(\w+)\s*$')
 def unlock_resource(msg, rtype, rname):
     ch = msg.channel._body['name']
-    uid = msg.channel._body['creator']
+    uid = msg._body['user']
     conn = db.get_conn()
     try:
         if not is_exist_resouce_type(conn, ch, rtype):
